@@ -16,6 +16,8 @@ struct ContentView: View {
     ]
     
     var body: some View {
+        @State var myValue: Bool = false
+        
         VStack(alignment: .leading) {
             Text("Score Keeper")
                 .font(.title)
@@ -34,6 +36,8 @@ struct ContentView: View {
                         Text("\(player.score)")
                         Stepper("\(player.score)", value: $player.score)
                             .labelsHidden()
+                        // TODO: need to implement a protocol for Player for "enabled" feature
+                        Toggle(isOn: $player.enabled) { Text("Enabled") }
                     }
                 }
             }
